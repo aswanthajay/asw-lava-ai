@@ -111,7 +111,7 @@
 </script>
 
 <div class="container">
-	<h1>Floor is Llava</h1>
+	<h1>Vision Ai by Aswanth</h1>
 	<div
 		class="upload-area {isDragging ? 'dragging' : ''}"
 		role="button"
