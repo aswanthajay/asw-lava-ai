@@ -151,21 +151,16 @@
 	{/if}
 	<div class="footer">
 		<p>
-			Built with 🧡 on <a href="https://developers.cloudflare.com/workers-ai/" target="_blank"
-				>Workers AI</a
-			>
+			Built by Aswanth, Beta Version 0.11
 		</p>
 		<p>
 			Learn more about <a
-				href="https://developers.cloudflare.com/workers-ai/privacy/"
-				target="_blank">Cloudflare AI data and privacy</a
+				href="https://votioncloud.online/workers-ai/privacy/"
+				target="_blank">AI data and privacy</a
 			>
 		</p>
 		<p>
-			👀 the <a
-				href="https://github.com/craigsdennis/floor-is-llava-workers-ai"
-				target="_blank">Workers AI code</a
-			>
+			👀 my code on github public by 2025
 		</p>
 
 	</div>
