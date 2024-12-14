@@ -227,10 +227,11 @@
 		cursor: pointer;
 		font-size: 20px;
 		border-radius: 8px;
+		background-color: rgba(255, 255, 255, 0.1); /* Added background to enhance visibility */
 	}
 
 	.upload-area.dragging {
-		background-color: rgba(255, 255, 255, 0.1);
+		background-color: rgba(255, 255, 255, 0.2); /* Slightly darker when dragging */
 	}
 
 	.upload-area img {
@@ -248,6 +249,8 @@
 		font-size: 18px;
 		border-radius: 8px;
 		border: none;
+		background-color: rgba(0, 0, 0, 0.3); /* Darker background */
+		color: #fff;
 	}
 
 	.submit-button {
@@ -316,4 +319,5 @@
 		}
 	}
 </style>
+
 
