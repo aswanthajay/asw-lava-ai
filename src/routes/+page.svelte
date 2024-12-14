@@ -159,12 +159,15 @@
 	}
 
 	body {
-		font-family: 'Arial', sans-serif;
-		background: linear-gradient(45deg, #ff6b6b, #f7b7a3, #f6d365);
-		background-size: 400% 400%;
-		animation: gradientAnimation 15s ease infinite;
-		color: black; /* Set global text color to black */
-	}
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Ensures the gradient covers the entire viewport */
+    background: linear-gradient(45deg, #ff6b6b, #f7b7a3, #f6d365, #84fab0, #8fd3f4);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: black; /* Ensure text remains legible */
+}
 
 	/* Navigation Bar */
 	.navbar {
