@@ -163,7 +163,7 @@
 		background: linear-gradient(45deg, #ff6b6b, #f7b7a3, #f6d365);
 		background-size: 400% 400%;
 		animation: gradientAnimation 15s ease infinite;
-		color: #fff;
+		color: black; /* Set global text color to black */
 	}
 
 	/* Navigation Bar */
@@ -183,11 +183,11 @@
 	.navbar-brand {
 		font-size: 24px;
 		font-weight: bold;
-		color: #fff;
+		color: white;
 	}
 
 	.navbar-links a {
-		color: #fff;
+		color: white;
 		text-decoration: none;
 		margin: 0 15px;
 		font-size: 18px;
@@ -209,7 +209,7 @@
 	}
 
 	h1 {
-		color: #fff;
+		color: black;
 		font-size: 36px;
 		margin-bottom: 30px;
 	}
@@ -218,7 +218,7 @@
 		width: 100%;
 		max-width: 450px;
 		height: 300px;
-		border: 3px dashed #fff;
+		border: 3px dashed black;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -227,11 +227,11 @@
 		cursor: pointer;
 		font-size: 20px;
 		border-radius: 8px;
-		background-color: rgba(255, 255, 255, 0.1); /* Added background to enhance visibility */
+		background-color: rgba(255, 255, 255, 0.1);
 	}
 
 	.upload-area.dragging {
-		background-color: rgba(255, 255, 255, 0.2); /* Slightly darker when dragging */
+		background-color: rgba(255, 255, 255, 0.2);
 	}
 
 	.upload-area img {
@@ -249,14 +249,14 @@
 		font-size: 18px;
 		border-radius: 8px;
 		border: none;
-		background-color: rgba(0, 0, 0, 0.3); /* Darker background */
-		color: #fff;
+		background-color: white; /* Background color changed to white for better visibility */
+		color: black; /* Text color set to black */
 	}
 
 	.submit-button {
 		padding: 15px 30px;
 		background-color: #ff6b6b;
-		color: white;
+		color: black;
 		border: none;
 		border-radius: 5px;
 		cursor: pointer;
@@ -271,7 +271,7 @@
 	.loading-indicator {
 		margin-top: 30px;
 		font-size: 18px;
-		color: #fff;
+		color: black;
 	}
 
 	.description {
@@ -279,10 +279,10 @@
 		font-size: 20px;
 		font-weight: bold;
 		padding: 20px;
-		border: 3px solid #fff;
+		border: 3px solid black;
 		border-radius: 5px;
-		background-color: rgba(255, 255, 255, 0.1);
-		color: #ff6b6b;
+		background-color: rgba(255, 255, 255, 0.7);
+		color: black;
 		max-width: 80%;
 		text-align: center;
 	}
@@ -291,7 +291,7 @@
 		margin-top: 60px;
 		text-align: center;
 		font-size: 16px;
-		color: #fff;
+		color: black;
 	}
 
 	.footer p {
@@ -319,5 +319,6 @@
 		}
 	}
 </style>
+
 
 
