@@ -34,7 +34,7 @@
 				canvas.width = width;
 				canvas.height = height;
 				const ctx = canvas.getContext('2d');
-				ctx.drawImage(img, 0, 0, width, height);
+				ctx?.drawImage(img, 0, 0, width, height);
 
 				canvas.toBlob((blob) => {
 					if (blob) {
@@ -110,60 +110,30 @@
 	};
 </script>
 
-<div class="container">
-	<!-- Navigation Bar -->
-	<nav class="navbar">
-		<div class="navbar-brand">Aswanth Ajay</div>
-		<div class="navbar-links">
-			<a href="#home">Home</a>
-			<a href="#about">About</a>
-			<a href="#contact">Contact</a>
-		</div>
-	</nav>
-
-	<h1>Vision Ai by Aswanth</h1>
-
-	<div class="upload-area {isDragging ? 'dragging' : ''}" role="button" tabindex="0" on:drop={handleDrop} on:dragover={handleDragOver} on:dragleave={handleDragLeave} on:click={() => document.getElementById('file-input')?.click()} on:keydown={handleKeyDown} aria-label="Upload Area: Drag & Drop Image or Click to Upload">
-		<input type="file" accept="image/*" on:change={handleFileUpload} style="display: none;" id="file-input" />
-		{#if imageUrl}
-			<img src={imageUrl} alt="Upload preview" />
-		{:else}
-			<label for="file-input">Drag & Drop Image or Click to Upload</label>
-		{/if}
-	</div>
-
-	<input type="text" class="question-input" placeholder="Ask a question about the photo..." bind:value={question} />
-	<button class="submit-button" on:click={submitForm}>Submit</button>
-
-	{#if isLoading}
-		<div class="loading-indicator">Processing your request...</div>
-	{/if}
-
-	{#if description}
-		<div class="description">{description}</div>
-	{/if}
-
-	<div class="footer">
-		<p>Built by Aswanth, Beta Version 0.11</p>
-		<p>Learn more about <a href="https://votioncloud.online/workers-ai/privacy/" target="_blank">AI data and privacy</a></p>
-		<p>👀 my code on github public by 2025</p>
-	</div>
-</div>
-
 <style>
-	/* Global Styling */
-	* {
+	/* Live Gradient Background Animation */
+	body {
 		margin: 0;
 		padding: 0;
-		box-sizing: border-box;
+		height: 100vh;
+		background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #fbc2eb);
+		background-size: 300% 300%;
+		animation: gradientShift 10s ease infinite;
+		color: black;
+		font-family: Arial, sans-serif;
+		overflow-x: hidden;
 	}
 
-	body {
-		font-family: 'Arial', sans-serif;
-		background: linear-gradient(45deg, #ff6b6b, #f7b7a3, #f6d365);
-		background-size: 400% 400%;
-		animation: gradientAnimation 15s ease infinite;
-		color: black; /* Set global text color to black */
+	@keyframes gradientShift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 
 	/* Navigation Bar */
@@ -175,11 +145,11 @@
 		background: rgba(0, 0, 0, 0.7);
 		border-radius: 0 0 8px 8px;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-		position: fixed; /* Make the navbar fixed */
+		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%; /* Full width */
-		z-index: 1000; /* Ensure it stays above other elements */
+		width: 100%;
+		z-index: 1000;
 	}
 
 	.navbar-brand {
@@ -200,27 +170,32 @@
 		color: #ff6b6b;
 	}
 
-	/* Content Styling */
+	/* Container Styling */
 	.container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 80px 20px 40px; /* Add top padding to prevent overlap with navbar */
+		padding: 100px 20px 40px;
 		max-width: 1000px;
 		margin: 0 auto;
+		text-align: center;
 	}
 
 	h1 {
-		color: black;
 		font-size: 36px;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 
+	p {
+		font-size: 20px;
+		line-height: 1.5;
+	}
+
+	/* Upload Area Styling */
 	.upload-area {
-		width: 100%;
-		max-width: 450px;
+		width: 400px;
 		height: 300px;
-		border: 3px dashed black;
+		border: 3px dashed #ccc;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -228,67 +203,22 @@
 		transition: background-color 0.3s;
 		cursor: pointer;
 		font-size: 20px;
-		border-radius: 8px;
-		background-color: rgba(255, 255, 255, 0.1);
+		color: black;
+		background: rgba(255, 255, 255, 0.7);
+		border-radius: 10px;
 	}
 
 	.upload-area.dragging {
-		background-color: rgba(255, 255, 255, 0.2);
+		background-color: #e0e0e0;
 	}
 
 	.upload-area img {
 		max-width: 100%;
 		max-height: 100%;
 		display: block;
-		border-radius: 8px;
 	}
 
-	.question-input {
-		width: 100%;
-		max-width: 450px;
-		padding: 15px;
-		margin-bottom: 30px;
-		font-size: 18px;
-		border-radius: 8px;
-		border: none;
-		background-color: white; /* Background color changed to white for better visibility */
-		color: black; /* Text color set to black */
-	}
-
-	.submit-button {
-		padding: 15px 30px;
-		background-color: #ff6b6b;
-		color: black;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-		font-size: 18px;
-		transition: background-color 0.3s ease;
-	}
-
-	.submit-button:hover {
-		background-color: #ff3b3b;
-	}
-
-	.loading-indicator {
-		margin-top: 30px;
-		font-size: 18px;
-		color: black;
-	}
-
-	.description {
-		margin-top: 30px;
-		font-size: 20px;
-		font-weight: bold;
-		padding: 20px;
-		border: 3px solid black;
-		border-radius: 5px;
-		background-color: rgba(255, 255, 255, 0.7);
-		color: black;
-		max-width: 80%;
-		text-align: center;
-	}
-
+	/* Footer */
 	.footer {
 		margin-top: 60px;
 		text-align: center;
@@ -301,26 +231,76 @@
 	}
 
 	.footer a {
-		color: #ff6b6b;
+		color: #0070f3;
 		text-decoration: none;
 	}
 
 	.footer a:hover {
 		text-decoration: underline;
 	}
-
-	@keyframes gradientAnimation {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
 </style>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+	<div class="navbar-brand">Aswanth Ajay</div>
+	<div class="navbar-links">
+		<a href="#home">Home</a>
+		<a href="#about">About</a>
+		<a href="#contact">Contact</a>
+	</div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+	<h1>Vision AI by Aswanth</h1>
+	<div
+		class="upload-area {isDragging ? 'dragging' : ''}"
+		role="button"
+		tabindex="0"
+		on:drop={handleDrop}
+		on:dragover={handleDragOver}
+		on:dragleave={handleDragLeave}
+		on:click={() => document.getElementById('file-input')?.click()}
+		on:keydown={handleKeyDown}
+		aria-label="Upload Area: Drag & Drop Image or Click to Upload"
+	>
+		<input
+			type="file"
+			accept="image/*"
+			on:change={handleFileUpload}
+			style="display: none;"
+			id="file-input"
+		/>
+		{#if imageUrl}
+			<img src={imageUrl} alt="Upload preview" />
+		{:else}
+			<label for="file-input">Drag & Drop Image or Click to Upload</label>
+		{/if}
+	</div>
+	<input
+		type="text"
+		class="question-input"
+		placeholder="Ask a question about the photo..."
+		bind:value={question}
+	/>
+	<button class="submit-button" on:click={submitForm}>Submit</button>
+	{#if isLoading}
+		<div class="loading-indicator">Processing your request...</div>
+	{/if}
+	{#if description}
+		<div class="description">{description}</div>
+	{/if}
+</div>
+
+<!-- Footer -->
+<div class="footer">
+	<p>Built by Aswanth Ajay - Beta Version 0.11</p>
+	<p>
+		Learn more about <a href="https://votioncloud.online/workers-ai/privacy/" target="_blank">AI data and privacy</a>
+	</p>
+	<p>👀 Check out my code on GitHub public by 2025</p>
+</div>
+
 
 
 
