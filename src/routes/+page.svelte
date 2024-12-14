@@ -171,13 +171,15 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 20px;
+		padding: 15px 20px;
 		background: rgba(0, 0, 0, 0.7);
-		border-radius: 8px;
+		border-radius: 0 0 8px 8px;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-		position: sticky;
+		position: fixed; /* Make the navbar fixed */
 		top: 0;
-		width: 100%;
+		left: 0;
+		width: 100%; /* Full width */
+		z-index: 1000; /* Ensure it stays above other elements */
 	}
 
 	.navbar-brand {
@@ -203,7 +205,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 40px 20px;
+		padding: 80px 20px 40px; /* Add top padding to prevent overlap with navbar */
 		max-width: 1000px;
 		margin: 0 auto;
 	}
