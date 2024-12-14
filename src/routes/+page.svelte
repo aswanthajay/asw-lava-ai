@@ -100,7 +100,7 @@
 				description: string;
 			};
 			const result: Result = await response.json();
-			description = result.description; // Store the description from the response
+			description = result.description;
 		} catch (error) {
 			console.error('Error submitting form:', error);
 			description = 'An error occurred while processing your request.';
@@ -111,77 +111,114 @@
 </script>
 
 <div class="container">
+	<!-- Navigation Bar -->
+	<nav class="navbar">
+		<div class="navbar-brand">Aswanth Ajay</div>
+		<div class="navbar-links">
+			<a href="#home">Home</a>
+			<a href="#about">About</a>
+			<a href="#contact">Contact</a>
+		</div>
+	</nav>
+
 	<h1>Vision Ai by Aswanth</h1>
-	<div
-		class="upload-area {isDragging ? 'dragging' : ''}"
-		role="button"
-		tabindex="0"
-		on:drop={handleDrop}
-		on:dragover={handleDragOver}
-		on:dragleave={handleDragLeave}
-		on:click={() => document.getElementById('file-input')?.click()}
-		on:keydown={handleKeyDown}
-		aria-label="Upload Area: Drag & Drop Image or Click to Upload"
-	>
-		<input
-			type="file"
-			accept="image/*"
-			on:change={handleFileUpload}
-			style="display: none;"
-			id="file-input"
-		/>
+
+	<div class="upload-area {isDragging ? 'dragging' : ''}" role="button" tabindex="0" on:drop={handleDrop} on:dragover={handleDragOver} on:dragleave={handleDragLeave} on:click={() => document.getElementById('file-input')?.click()} on:keydown={handleKeyDown} aria-label="Upload Area: Drag & Drop Image or Click to Upload">
+		<input type="file" accept="image/*" on:change={handleFileUpload} style="display: none;" id="file-input" />
 		{#if imageUrl}
 			<img src={imageUrl} alt="Upload preview" />
 		{:else}
 			<label for="file-input">Drag & Drop Image or Click to Upload</label>
 		{/if}
 	</div>
-	<input
-		type="text"
-		class="question-input"
-		placeholder="Ask a question about the photo..."
-		bind:value={question}
-	/>
+
+	<input type="text" class="question-input" placeholder="Ask a question about the photo..." bind:value={question} />
 	<button class="submit-button" on:click={submitForm}>Submit</button>
+
 	{#if isLoading}
 		<div class="loading-indicator">Processing your request...</div>
 	{/if}
+
 	{#if description}
 		<div class="description">{description}</div>
 	{/if}
-	<div class="footer">
-		<p>
-			Built by Aswanth, Beta Version 0.11
-		</p>
-		<p>
-			Learn more about <a
-				href="https://votioncloud.online/workers-ai/privacy/"
-				target="_blank">AI data and privacy</a
-			>
-		</p>
-		<p>
-			👀 my code on github public by 2025
-		</p>
 
+	<div class="footer">
+		<p>Built by Aswanth, Beta Version 0.11</p>
+		<p>Learn more about <a href="https://votioncloud.online/workers-ai/privacy/" target="_blank">AI data and privacy</a></p>
+		<p>👀 my code on github public by 2025</p>
 	</div>
 </div>
 
 <style>
+	/* Global Styling */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: 'Arial', sans-serif;
+		background: linear-gradient(45deg, #ff6b6b, #f7b7a3, #f6d365);
+		background-size: 400% 400%;
+		animation: gradientAnimation 15s ease infinite;
+		color: #fff;
+	}
+
+	/* Navigation Bar */
+	.navbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px;
+		background: rgba(0, 0, 0, 0.7);
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+		position: sticky;
+		top: 0;
+		width: 100%;
+	}
+
+	.navbar-brand {
+		font-size: 24px;
+		font-weight: bold;
+		color: #fff;
+	}
+
+	.navbar-links a {
+		color: #fff;
+		text-decoration: none;
+		margin: 0 15px;
+		font-size: 18px;
+		transition: color 0.3s ease;
+	}
+
+	.navbar-links a:hover {
+		color: #ff6b6b;
+	}
+
+	/* Content Styling */
 	.container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-top: 60px;
+		padding: 40px 20px;
+		max-width: 1000px;
+		margin: 0 auto;
 	}
 
 	h1 {
-		color: #0070f3;
+		color: #fff;
+		font-size: 36px;
+		margin-bottom: 30px;
 	}
 
 	.upload-area {
-		width: 400px;
+		width: 100%;
+		max-width: 450px;
 		height: 300px;
-		border: 3px dashed #ccc;
+		border: 3px dashed #fff;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -189,43 +226,49 @@
 		transition: background-color 0.3s;
 		cursor: pointer;
 		font-size: 20px;
+		border-radius: 8px;
 	}
 
 	.upload-area.dragging {
-		background-color: #e0e0e0;
+		background-color: rgba(255, 255, 255, 0.1);
 	}
 
 	.upload-area img {
 		max-width: 100%;
 		max-height: 100%;
 		display: block;
+		border-radius: 8px;
 	}
 
 	.question-input {
-		width: 400px;
+		width: 100%;
+		max-width: 450px;
 		padding: 15px;
 		margin-bottom: 30px;
 		font-size: 18px;
+		border-radius: 8px;
+		border: none;
 	}
 
 	.submit-button {
 		padding: 15px 30px;
-		background-color: #0070f3;
+		background-color: #ff6b6b;
 		color: white;
 		border: none;
 		border-radius: 5px;
 		cursor: pointer;
 		font-size: 18px;
+		transition: background-color 0.3s ease;
 	}
 
 	.submit-button:hover {
-		background-color: #005bb5;
+		background-color: #ff3b3b;
 	}
 
 	.loading-indicator {
 		margin-top: 30px;
 		font-size: 18px;
-		color: #0070f3;
+		color: #fff;
 	}
 
 	.description {
@@ -233,10 +276,10 @@
 		font-size: 20px;
 		font-weight: bold;
 		padding: 20px;
-		border: 3px solid #0070f3;
+		border: 3px solid #fff;
 		border-radius: 5px;
-		background-color: #e0f7fa;
-		color: #0070f3;
+		background-color: rgba(255, 255, 255, 0.1);
+		color: #ff6b6b;
 		max-width: 80%;
 		text-align: center;
 	}
@@ -245,7 +288,7 @@
 		margin-top: 60px;
 		text-align: center;
 		font-size: 16px;
-		color: #555;
+		color: #fff;
 	}
 
 	.footer p {
@@ -253,11 +296,24 @@
 	}
 
 	.footer a {
-		color: #0070f3;
+		color: #ff6b6b;
 		text-decoration: none;
 	}
 
 	.footer a:hover {
 		text-decoration: underline;
 	}
+
+	@keyframes gradientAnimation {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 </style>
+
